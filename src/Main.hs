@@ -1,0 +1,12 @@
+-- | Main entry point to the application.
+module Main where
+
+import Eval
+
+-- | The main entry point.
+main :: IO ()
+main = do
+    putStrLn "Welcome to FP Haskell Center!"
+    print $ eval (Con 1)
+    print $ eval (Div (Con 10) (Con 2))
+    putStrLn "Have a good day!"
