@@ -12,5 +12,6 @@ main = do
     print $ eval answer
     print $ evalWithExc answer
     print $ evalWithExc errorTerm
+    print $ evalWithState answer 0
     --print $ eval errorTerm
     putStrLn "Have a good day!"
