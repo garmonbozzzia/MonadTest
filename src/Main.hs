@@ -9,4 +9,6 @@ main = do
     putStrLn "Welcome to FP Haskell Center!"
     print $ eval (Con 1)
     print $ eval (Div (Con 10) (Con 2))
+    print $ eval answer
+    print $ eval errorTerm
     putStrLn "Have a good day!"
