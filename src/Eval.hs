@@ -6,10 +6,10 @@ eval :: Term -> Int
 eval (Con a) = a
 eval (Div a b) = eval a `div` eval b
 
-data Try a = Raise Exception | Return a deriving Show
+data MTry a = Raise Exception | Return a deriving Show
 type Exception = String
 
-evalWithExc :: Term -> Try Int
+evalWithExc :: Term -> MTry Int
 evalWithExc (Con n) = Return n
 evalWithExc (Div n m) = case evalWithExc n of
      Raise e -> Raise e

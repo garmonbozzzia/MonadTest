@@ -13,6 +13,6 @@ main = do
     print $ evalWithExc answer
     print $ evalWithExc errorTerm
     print $ evalWithState answer 0
-    putStrLn $ show (evalWithOutput answer)
+    print $ evalWithOutput answer
     --print $ eval errorTerm
     putStrLn "Have a good day!"
