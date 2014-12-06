@@ -2,6 +2,9 @@
 module Main where
 
 import Eval
+import EvalWithExc
+import EvalWithState
+import EvalWithOutput
 
 -- | The main entry point.
 main :: IO ()
