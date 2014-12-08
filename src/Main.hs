@@ -32,4 +32,4 @@ main = do
     --foldRightM (\a b -> putChar a >> return (a:b)) [] (show [1,3..10]) Prelude.>>= \r -> putStr r
     --print $ sequence' ["12","34"]
 
-    print $ extend vals
+    --print $ extend vals
