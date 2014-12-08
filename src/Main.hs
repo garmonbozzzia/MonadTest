@@ -8,6 +8,7 @@ import EvalWithOutput
 import EvalWithMonad
 
 import HW8
+import HW10
 
 -- | The main entry point.
 main :: IO ()
@@ -27,6 +28,8 @@ main = do
     --print $ eval errorTerm
     putStrLn "Have a good day!"
 
-    foldLeftM (\a b -> putChar b >> return (b : a ++ [b])) [] "haskell" Prelude.>>= \r -> putStrLn r
-    foldRightM (\a b -> putChar a >> return (a:b)) [] (show [1,3..10]) Prelude.>>= \r -> putStr r
+    --foldLeftM (\a b -> putChar b >> return (b : a ++ [b])) [] "haskell" Prelude.>>= \r -> putStrLn r
+    --foldRightM (\a b -> putChar a >> return (a:b)) [] (show [1,3..10]) Prelude.>>= \r -> putStr r
     --print $ sequence' ["12","34"]
+
+    print $ extend vals
