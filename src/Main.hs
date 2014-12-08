@@ -5,6 +5,9 @@ import Eval
 import EvalWithExc
 import EvalWithState
 import EvalWithOutput
+import EvalWithMonad
+
+import HW8
 
 -- | The main entry point.
 main :: IO ()
@@ -17,5 +20,13 @@ main = do
     print $ evalWithExc errorTerm
     print $ evalWithState answer 0
     print $ evalWithOutput answer
+    print $ evalWithExc answer
+
+    --print $ evalM errorTerm
+    print $ evalM answer
     --print $ eval errorTerm
     putStrLn "Have a good day!"
+
+    foldLeftM (\a b -> putChar b >> return (b : a ++ [b])) [] "haskell" Prelude.>>= \r -> putStrLn r
+    foldRightM (\a b -> putChar a >> return (a:b)) [] (show [1,3..10]) Prelude.>>= \r -> putStr r
+    --print $ sequence' ["12","34"]
