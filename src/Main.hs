@@ -7,7 +7,7 @@ import EvalWithState
 import EvalWithOutput
 import EvalWithMonad
 
-import HW8
+--import HW8
 import HW10
 
 -- | The main entry point.
@@ -27,6 +27,9 @@ main = do
     print $ evalM answer
     --print $ eval errorTerm
     putStrLn "Have a good day!"
+
+    print $ show vs
+    print $ show $ extend vs
 
     --foldLeftM (\a b -> putChar b >> return (b : a ++ [b])) [] "haskell" Prelude.>>= \r -> putStrLn r
     --foldRightM (\a b -> putChar a >> return (a:b)) [] (show [1,3..10]) Prelude.>>= \r -> putStr r

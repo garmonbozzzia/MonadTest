@@ -12,7 +12,7 @@ class M m where
 
     --evalWithMonad (Con a) = unit
 instance M MTry where
-    unit x = Return x
+    unit = Return
     (Raise e) >>= _ = Raise e
     (Return x) >>= f = f x
 
