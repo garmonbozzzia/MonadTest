@@ -43,7 +43,8 @@ main = do
     print $ removeone 2 [1,2,3,2,1]
     putStr "split: "
     print $ split [1,2,3]
-    
+    --print $ exprs [1,2]
+    print $ solutions [2,3] 6
 
     --print $ split [1,2,3,4,5]    
     --print $ choises [1,2]

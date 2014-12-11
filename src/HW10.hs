@@ -18,6 +18,7 @@ valid Mul _ _ = True
 valid Div x y = x `mod` y == 0
 
 data Expr = Val Int | App Op Expr Expr deriving Show
+
 evalExpr :: Expr -> [Int]
 evalExpr (Val a) = [a | a > 0]
 evalExpr (App op a b) = [apply op x y | x <- evalExpr a, y <- evalExpr b, valid op x y ]
@@ -31,6 +32,24 @@ extend xs =  [ App op x y | x <- xs, y <- xs, op <- [Add, Sub, Mul, Div], z <- e
 values :: Expr -> [Int]
 values (Val n) = [n]
 values (App _ a b) = values a ++ values b
+
+solution :: Expr -> [Int] -> Int -> Bool
+solution e ns n = elem (values e) (choises ns) && evalExpr e == [n]
+
+exprs :: [Int] -> [Expr]
+exprs [n] = [Val n]
+exprs ns = [e | (ln,rn) <-split ns
+              , l       <- exprs ln
+              , r       <- exprs rn
+              , e       <- combine l r ]
+
+solutions :: [Int] -> Int -> [Expr]
+solutions ns n = [e | ns'   <- choises ns
+                    , e     <- exprs ns'
+                    , evalExpr e == [n]]
+
+combine :: Expr -> Expr -> [Expr]
+combine l r = [App op l r | op <- [Add,Sub,Mul,Div]]
 
 split :: [a] -> [([a],[a])]
 split [] = []
