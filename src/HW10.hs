@@ -1,6 +1,11 @@
 module HW10 where
 
-data Op = Add | Sub | Mul | Div deriving Show
+data Op = Add | Sub | Mul | Div 
+instance Show Op where
+    show Add = "+"
+    show Sub = "-"
+    show Mul = "*"
+    show Div = "/"
 
 vals :: [Int]
 vals = [1,3,7,10,25,50]
@@ -17,7 +22,10 @@ valid Sub x y = x > y
 valid Mul _ _ = True
 valid Div x y = x `mod` y == 0
 
-data Expr = Val Int | App Op Expr Expr deriving Show
+data Expr = Val Int | App Op Expr Expr
+instance Show Expr where
+    show (Val n) = show n
+    show (App op a b) = "(" ++ (show a) ++ show op ++ (show b) ++ ")"
 
 evalExpr :: Expr -> [Int]
 evalExpr (Val a) = [a | a > 0]
