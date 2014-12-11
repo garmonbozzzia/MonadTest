@@ -38,10 +38,27 @@ split [x,y] = [([x],[y])]
 split (x:xs) = [([x],xs)] ++ (map (\(as,bs)-> (x:as,bs)) $ split xs)
 
 choises :: [a] -> [[a]]
-choises [] = []
-choises [x] = [[x]]
-choises (x:xs) = choises xs ++ ( concat $ map f $ choises xs ) where
-    f y = map (ins x) ( [([],y)] ++ split y ++ [(y,[])])
+--choises xs = concat $ map perms (subs xs)
+choises xs = [zs | ys <- subs xs , zs <- perms ys]
+
+removeone :: Int -> [Int] -> [Int]
+removeone _ [] = []
+removeone x (y:ys)
+    | x == y = ys
+    | otherwise = y : removeone x ys
+
+subs :: [a]->[[a]]
+subs [] = [[]]
+subs (x:xs) = sxs ++ map (x:) sxs where 
+    sxs = subs xs
+
+interleave :: a -> [a] -> [[a]]
+interleave x [] = [[x]]
+interleave x (y:ys) = (x:y:ys) : map (y:) (interleave x ys)
+
+perms :: [a]->[[a]]
+perms [] = [[]]
+perms (x:xs) = concat $ map (interleave x) (perms xs)
 
 ins :: a -> ([a],[a]) -> [a]
 ins x (xs,ys) = xs ++ [x] ++ ys

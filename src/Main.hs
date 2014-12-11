@@ -32,8 +32,19 @@ main = do
     print $ show $ extend vs
     print $ show $ values $ head $ extend vs
 
+    putStr "subs: "
+    print $ subs [1,2,3]
+    putStr "interleave: "
+    print $ interleave 1 [2,3,4,5]
+    putStr "perms: "
+    print $ perms [1,2,3]
+    --print $ concat $ map perms (subs [1,2,3])
+
+    putStr "removeone: "
+    print $ removeone 2 [1,2,3,2,1]
+
     --print $ split [1,2,3,4,5]    
-    print $ choises [1,2]
+    --print $ choises [1,2]
     --print $ (\y->map (ins 0) $ [([],y), (y,[])] ++ split y ) [1,2,3]
 
     --foldLeftM (\a b -> putChar b >> return (b : a ++ [b])) [] "haskell" Prelude.>>= \r -> putStrLn r
