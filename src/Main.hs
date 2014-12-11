@@ -30,6 +30,11 @@ main = do
 
     print $ show vs
     print $ show $ extend vs
+    print $ show $ values $ head $ extend vs
+
+    --print $ split [1,2,3,4,5]    
+    print $ choises [1,2]
+    --print $ (\y->map (ins 0) $ [([],y), (y,[])] ++ split y ) [1,2,3]
 
     --foldLeftM (\a b -> putChar b >> return (b : a ++ [b])) [] "haskell" Prelude.>>= \r -> putStrLn r
     --foldRightM (\a b -> putChar a >> return (a:b)) [] (show [1,3..10]) Prelude.>>= \r -> putStr r
