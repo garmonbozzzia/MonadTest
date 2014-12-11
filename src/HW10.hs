@@ -41,11 +41,17 @@ choises :: [a] -> [[a]]
 --choises xs = concat $ map perms (subs xs)
 choises xs = [zs | ys <- subs xs , zs <- perms ys]
 
-removeone :: Int -> [Int] -> [Int]
+removeone :: Eq a => a -> [a] -> [a]
 removeone _ [] = []
 removeone x (y:ys)
     | x == y = ys
     | otherwise = y : removeone x ys
+
+isChoise :: Eq a => [a] -> [a] -> Bool
+isChoise [] _ = True
+isChoise (_:_) [] = False
+isChoise (x:xs) ys = elem x ys && isChoise xs (removeone x ys)
+
 
 subs :: [a]->[[a]]
 subs [] = [[]]
