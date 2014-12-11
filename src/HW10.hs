@@ -35,7 +35,8 @@ values (App _ a b) = values a ++ values b
 split :: [a] -> [([a],[a])]
 split [] = []
 split [x,y] = [([x],[y])]
-split (x:xs) = [([x],xs)] ++ (map (\(as,bs)-> (x:as,bs)) $ split xs)
+--split (x:xs) = [([x],xs)] ++ (map (\(as,bs)-> (x:as,bs)) $ split xs)
+split (x:xs) = [([x],xs)] ++ [(x:as,bs) | (as,bs) <- split xs]
 
 choises :: [a] -> [[a]]
 --choises xs = concat $ map perms (subs xs)

@@ -39,9 +39,11 @@ main = do
     putStr "perms: "
     print $ perms [1,2,3]
     --print $ concat $ map perms (subs [1,2,3])
-
     putStr "removeone: "
     print $ removeone 2 [1,2,3,2,1]
+    putStr "split: "
+    print $ split [1,2,3]
+    
 
     --print $ split [1,2,3,4,5]    
     --print $ choises [1,2]
