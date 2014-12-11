@@ -17,10 +17,10 @@ apply Mul x y = x*y
 apply Div x y = x `div` y
 
 valid :: Op -> Int -> Int -> Bool
-valid Add _ _ = True
-valid Sub x y = x > y
-valid Mul _ _ = True
-valid Div x y = x `mod` y == 0
+valid Add x y = x <= y
+valid Sub x y = x >= y
+valid Mul x y = x <= y && x /= 1 && y /= 1
+valid Div x y = y > 1 && x `mod` y == 0
 
 data Expr = Val Int | App Op Expr Expr
 instance Show Expr where
@@ -33,9 +33,6 @@ evalExpr (App op a b) = [apply op x y | x <- evalExpr a, y <- evalExpr b, valid 
 
 vs :: [Expr]
 vs = map Val vals
-
-extend :: [Expr] -> [Expr]
-extend xs =  [ App op x y | x <- xs, y <- xs, op <- [Add, Sub, Mul, Div], z <- evalExpr (App op x y) ]
 
 values :: Expr -> [Int]
 values (Val n) = [n]

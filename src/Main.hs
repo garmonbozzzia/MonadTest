@@ -28,12 +28,8 @@ main = do
     --print $ eval errorTerm
     putStrLn "Have a good day!"
 
-    print $ show vs
-    print $ show $ extend vs
-    print $ show $ values $ head $ extend vs
-
     putStr "subs: "
-    print $ subs [1,2,3]
+    print $ show $ subs [1,2,3]
     putStr "interleave: "
     print $ interleave 1 [2,3,4,5]
     putStr "perms: "
@@ -44,7 +40,8 @@ main = do
     putStr "split: "
     print $ split [1,2,3]
     --print $ exprs [1,2]
-    print $ solutions [4,2,3] 6
+    print $ solutions [1,3,7,10,25,50] 765
+    --print $ length $ solutions [3,7,11,29,42] 780
 
     --print $ split [1,2,3,4,5]    
     --print $ choises [1,2]
