@@ -2,10 +2,10 @@ module HW10 where
 
 data Op = Add | Sub | Mul | Div 
 instance Show Op where
-    show Add = "+"
-    show Sub = "-"
-    show Mul = "*"
-    show Div = "/"
+    show Add = " + "
+    show Sub = " - "
+    show Mul = " * "
+    show Div = " / "
 
 vals :: [Int]
 vals = [1,3,7,10,25,50]
